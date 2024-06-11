@@ -61,6 +61,8 @@ app.delete('/campgrounds/:id', async (req, res) => {
     res.redirect('/campgrounds');
 })
 
+//need to figure out how to handle errors in this app
+
 app.listen(3000, () => {
     console.log('SERVING ON PORT 3000')
 })

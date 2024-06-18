@@ -3,6 +3,7 @@ const axios = require('axios');
 const cities = require('./cities')
 const Campground = require('../models/campground');
 const {places, descriptors} = require('./seedHelpers');
+const seedImg = require('img')
 
 
 main().catch(err => console.log(err));
@@ -13,20 +14,6 @@ async function main() {
 }
 
 const sample = (array) => array[Math.floor(Math.random() * array.length)];
-
-async function seedImg() {
-  try {
-    const resp = await axios.get('https://api.unsplash.com/photos/random', {
-      params: {
-        client_id: 'xDX39DaEvVTKywBpMjR2L3_X_agdKzsByKavxkrdmQo',
-        collections: 2338626,
-      },
-    })
-    return resp.data.urls.small
-  } catch (err) {
-    console.error(err)
-  }
-}
 
 const seedDB = async() => {
     await Campground.deleteMany({});
